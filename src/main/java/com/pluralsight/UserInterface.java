@@ -132,7 +132,7 @@ public class UserInterface {
 
     }
 
-    //private void displayVehicleHelper(List<Vehicle> vehicles){
+    private void displayVehicleHelper(List<Vehicle> vehicles){
         System.out.println("Listing vehicles:");
         for (Vehicle vehicle : vehicles){
             System.out.println(vehicle);
@@ -140,7 +140,7 @@ public class UserInterface {
 
         }
 
-       // private void processGetAllVehicleRequest(){
+       private void processGetAllVehicleRequest(){
         List<Vehicle> allVehicles = dealership.getAllVehicles();
         displayVehicleHelper(allVehicles);
         }
