@@ -61,7 +61,24 @@ public class DealershipFileManager {
     // saveDealerShip method
 
     public void saveDealership(Dealership dealership) {
-    }
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("dealership.csv")) {
+                writer.write(dealership.getName()+"|"+dealership.getAddres()+"|"+dealership.getPhone());
+                writer.newLine();
+                for (Vehicle vehicle :dealership.getVehicle()){
+                    writer.write(vehicle.getVin() + "|" + vehicle.getYear() + "|" + vehicle.getMake() + "|" + vehicle.getModel() + "|" + vehicle.getVehicleType() + "|" + vehicle.getColor() + "|" + vehicle.getOdometer() + "|" + vehicle.getPrice());
+                    writer.newLine();
+
+                }
+                System.out.println("Dealership data saves successfully!";)
+
+            } catch(IOException e){
+               e.printStackTrace();
+                System.out.println("error occurred while saving dealership data.");
+
+            }
+        }
 
     }
 
