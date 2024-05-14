@@ -8,13 +8,13 @@ public class Dealership {
     private String address;
     private String phone;
 
-    private ArrayList<Vehicle> inventory;
+    private ArrayList<Vehicle> vehicles;
 
     public Dealership(String name, String address, String phone) {
         this.name = name;
         this.address = address;
         this.phone = phone;
-        this.inventory = new ArrayList<>();
+        this.vehicles= new ArrayList<>();
     }
 
     public String getName() {
@@ -69,13 +69,28 @@ public class Dealership {
         return null;
     }
 
+
+     // add vehicle method
     public void addVehicle(Vehicle vehicle){
+        vehicle.add(vehicle);
 
 
     }
-
+     // remove vehicle method
     public void removeVehicle(Vehicle vehicle){
+        vehicle.remove(vehicle);
 
+    }
+
+    //method search for vehicle by make model
+    public ArrayList<Vehicle> searchVehicle(String make, String model){
+        ArrayList<Vehicle> matchingVehicles = new ArrayList<>();
+        for (Vehicle vehicle : vehicles){
+            if (vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)){
+                matchingVehicles.add(vehicle);
+            }
+        }
+        return matchingVehicles;
     }
 
 
