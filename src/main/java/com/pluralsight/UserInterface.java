@@ -21,6 +21,7 @@ public class UserInterface {
 
     }
 
+
     public void displayMenu(){
         System.out.println("Welcome to the Car Dealership!");
         System.out.println("1. Get by price request");
@@ -29,11 +30,7 @@ public class UserInterface {
         System.out.println("4. Get by color request");
         System.out.println("5. Get by mileage request");
         System.out.println("6. Get by vehicle typeRequest");
-        System.out.println("7. Get all vehicles request");
-        System.out.println("8.add vehicle request");
-        System.out.println("9. remove vehicle request");
-        System.out.println("10. helper vehicle ");
-        System.out.println("11. exit");
+        System.out.println("7. exit");
         System.out.println("enter your choice: ");
 
     }
@@ -70,22 +67,6 @@ public class UserInterface {
                     break;
 
                 case 7:
-                    processGetByAllVehiclesRequest();
-                    break;
-
-                case 8:
-                    processAddVehicleRequest();
-                    break;
-
-                case 9:
-                    processRemoveVehicleRequest();
-                    break;
-
-                case 10:
-                    displayVehicleHelper();
-                    break;
-
-                case 11:
                     exit = true;
                     System.out.println("Thank you for visiting!");
                     break;
@@ -121,15 +102,44 @@ public class UserInterface {
 
     }
 
-    private void processGetByAllVehiclesRequest(){
-
+    public void display(){
+        System.out.println("welcome!");
+        System.out.println("1. Get all vehicles");
+        System.out.println("2. Add a vehicles");
+        System.out.println("3. Remove a vehicles");
+        System.out.println("4. display vehicle helper");
+        System.out.println("5. exits");
+        System.out.println("enter your choice:");
     }
-
-    private void processAddVehicleRequest(){
-
-    }
-    private void processRemoveVehicleRequest(){
-
+    public void handleUserInput(){
+        boolean exit = false;
+        while (!exit){
+            display();
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice){
+                case 1:
+                    processGetAllVehicleRequest();
+                    break;
+                case 2:
+                    processAddVehicleRequest();
+                    break;
+                case 3:
+                    processRemoveVehicleRequest();
+                    break;
+                case 4:
+                    displayVehicleHelper();
+                    break;
+                case 5:
+                    exit = true;
+                    saveDealership();
+                    System.out.println("Thank you for visiting!");
+                    break;
+                default:
+                    System.out.println("Invalid choice please try again.");
+                    break;
+            }
+        }
     }
 
     private void displayVehicleHelper(List<Vehicle> vehicles){
@@ -142,7 +152,19 @@ public class UserInterface {
 
        private void processGetAllVehicleRequest(){
         List<Vehicle> allVehicles = dealership.getAllVehicles();
-        displayVehicleHelper();
+        displayVehicleHelper(allVehicles);
+        }
+
+        private void processAddVehicleRequest(){
+         saveDealership();
+        }
+
+        private void processRemoveVehicleRequest(){
+        saveDealership();
+        }
+
+        private void saveDealership(){
+        DealershipFileManager.saveDealership(dealership);
         }
 
     }

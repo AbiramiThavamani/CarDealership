@@ -60,7 +60,7 @@ public class DealershipFileManager {
 
     // saveDealerShip method
 
-    public void saveDealership(Dealership dealership) {
+    public static void saveDealership(Dealership dealership) {
 
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("dealership.csv")) {
