@@ -65,25 +65,26 @@ public class Dealership {
         return null;
     }
 
+    // get all vehicle method
     public List<Vehicle> getAllVehicles(){
-        return null;
+        return vehicles;
     }
 
 
      // add vehicle method
     public void addVehicle(Vehicle vehicle){
-        vehicle.add(vehicle);
+        vehicles.add(vehicle);
 
 
     }
      // remove vehicle method
-    public void removeVehicle(Vehicle vehicle){
-        vehicle.remove(vehicle);
+    public void removeVehicle(){
+        // empty method
 
     }
 
-    //method search for vehicle by make model
-    public ArrayList<Vehicle> searchVehicle(String make, String model){
+    //method search type for vehicle by make model
+    public ArrayList<Vehicle> getVehiclesByType (String make, String model){
         ArrayList<Vehicle> matchingVehicles = new ArrayList<>();
         for (Vehicle vehicle : vehicles){
             if (vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)){

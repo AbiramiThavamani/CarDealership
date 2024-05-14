@@ -6,11 +6,13 @@ import java.util.Scanner;
 public class UserInterface {
 
         private Dealership dealership  ;
+        private DealershipFileManager fileManager;
         private Scanner scanner;
 
-    public UserInterface(Dealership dealership) {
-        this.dealership = dealership;
+    public UserInterface() {
         this.scanner = new Scanner(System.in);
+        this.fileManager = fileManager;
+
         init();
 
     }
@@ -142,6 +144,8 @@ public class UserInterface {
         }
     }
 
+
+
     private void displayVehicleHelper(List<Vehicle> vehicles){
         System.out.println("Listing vehicles:");
         for (Vehicle vehicle : vehicles){
@@ -156,10 +160,12 @@ public class UserInterface {
         }
 
         private void processAddVehicleRequest(){
+        dealership.addVehicle();
          saveDealership();
         }
 
         private void processRemoveVehicleRequest(){
+        dealership.removeVehicle();
         saveDealership();
         }
 
