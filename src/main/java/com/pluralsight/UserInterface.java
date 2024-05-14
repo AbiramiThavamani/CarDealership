@@ -38,7 +38,7 @@ public class UserInterface {
 
     }
 
- //   public void userInputRequest(){
+     public void userInputRequest(){
         boolean exit = false;
         while (!exit){
             displayMenu();
