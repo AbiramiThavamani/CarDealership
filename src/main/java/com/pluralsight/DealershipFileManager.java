@@ -6,12 +6,6 @@ import java.io.*;
 
 
 public class DealershipFileManager {
-    private String fileName;
-
-    public DealershipFileManager() {
-        this.fileName = fileName;
-
-    }
 
     // method should read dealership data from file and create a dealership object
     public Dealership getDealership() {
@@ -61,7 +55,18 @@ public class DealershipFileManager {
     // saveDealerShip method
 
     public static void saveDealership(Dealership dealership) {
-
+        try {
+            FileWriter writer = new FileWriter("dealership.csv");
+            writer.write(dealership.getName()+"|"+dealership.getAddress()+"|"+dealership.getPhone()+"\n");
+            for(Vehicle vehicle: dealership.getAllVehicles()) {
+                writer.write(vehicle.getVin()+"|"+ vehicle.getYear()+"|"+vehicle.getMake()+"|"+vehicle.getModel()+"|"+vehicle.getVehicleType()+"|"+vehicle.getColor()+"|"+ vehicle.getOdometer()+"|"+ vehicle.getPrice()+"\n");
+            }
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 }
 

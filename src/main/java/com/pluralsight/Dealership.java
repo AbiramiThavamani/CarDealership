@@ -2,6 +2,7 @@ package com.pluralsight;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Dealership {
     private String name;
@@ -42,58 +43,93 @@ public class Dealership {
     }
 
     public List<Vehicle> getVehiclesByPrice(double min, double max){
-        return  null; // remove later
+        List<Vehicle> vehicleList = new ArrayList<>();
+        for(Vehicle vehicle: vehicles) {
+            if(vehicle.getPrice() >= min && vehicle.getPrice() <= max) {
+                vehicleList.add(vehicle);
+                System.out.println(vehicle);
+            }
+        }
+        return vehicleList;
     }
 
     public List<Vehicle> getVehicleByMakeModel(String make, String model){
-        return null;
+        List<Vehicle> vehicleList = new ArrayList<>();
+        for(Vehicle vehicle: vehicles) {
+            if(vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)) {
+                vehicleList.add(vehicle);
+                System.out.println(vehicle);
+            }
+        }
+        return vehicleList;
     }
 
-    public List<Vehicle> getVehicleByYear(double min, double max){
-        return null;
+    public List<Vehicle> getVehicleByYear(int minYear, int maxYear){
+        List<Vehicle> vehicleList = new ArrayList<>();
+        for(Vehicle vehicle: vehicles) {
+            if(vehicle.getYear() >= minYear && vehicle.getYear() <= maxYear) {
+                vehicleList.add(vehicle);
+                System.out.println(vehicle);
+            }
+        }
+        return vehicleList;
     }
 
     public List<Vehicle> getVehicleByColor(String color){
-        return null;
+        List<Vehicle> vehicleList = new ArrayList<>();
+        for(Vehicle vehicle: vehicles) {
+            if(vehicle.getColor().equalsIgnoreCase(color)) {
+                vehicleList.add(vehicle);
+                System.out.println(vehicle);
+            }
+        }
+        return vehicleList;
     }
 
-    public List<Vehicle> getVehicleByMileage(double min, double max){
-        return null;
+    public List<Vehicle> getVehicleByMileage(int minMileage, int maxMileage){
+        List<Vehicle> vehicleList = new ArrayList<>();
+        for(Vehicle vehicle: vehicles) {
+            if(vehicle.getOdometer() >= minMileage && vehicle.getOdometer() <= maxMileage) {
+                vehicleList.add(vehicle);
+                System.out.println(vehicle);
+            }
+        }
+        return vehicleList;
     }
 
     public List<Vehicle> getVehiclesByType(String vehicleType){
-        return null;
+        List<Vehicle> vehicleList = new ArrayList<>();
+        for(Vehicle vehicle: vehicles) {
+            if(vehicle.getVehicleType().equalsIgnoreCase(vehicleType)) {
+                vehicleList.add(vehicle);
+                System.out.println(vehicle);
+            }
+        }
+        return vehicleList;
     }
 
     // get all vehicle method
     public List<Vehicle> getAllVehicles(){
+        for(Vehicle vehicle: vehicles) {
+            System.out.println(vehicle);
+        }
         return vehicles;
     }
-
 
      // add vehicle method
     public void addVehicle(Vehicle vehicle){
         vehicles.add(vehicle);
-
-
     }
+
      // remove vehicle method
-    public void removeVehicle(){
-        // empty method
-
-    }
-
-    //method search type for vehicle by make model
-    public ArrayList<Vehicle> getVehiclesByType (String make, String model){
-        ArrayList<Vehicle> matchingVehicles = new ArrayList<>();
-        for (Vehicle vehicle : vehicles){
-            if (vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)){
-                matchingVehicles.add(vehicle);
+    public void removeVehicle(int vin){
+        Vehicle vehicleToRemove = null;
+        for (Vehicle vehicle: vehicles) {
+            if(vehicle.getVin() == vin) {
+                vehicleToRemove = vehicle;
+                break;
             }
         }
-        return matchingVehicles;
+        vehicles.remove(vehicleToRemove);
     }
-
-
-    }
-
+}
