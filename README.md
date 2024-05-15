@@ -1,6 +1,6 @@
 # Project Title
 
-Car Dealership
+CarDealership
 
 ## Description of the Project
 

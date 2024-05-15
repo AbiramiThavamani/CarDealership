@@ -66,7 +66,7 @@ public class DealershipFileManager {
 
             bufferedWriter.flush();
             bufferedWriter.close();
-            
+
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
