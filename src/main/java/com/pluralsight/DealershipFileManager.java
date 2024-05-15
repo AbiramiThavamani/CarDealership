@@ -56,13 +56,17 @@ public class DealershipFileManager {
 
     public static void saveDealership(Dealership dealership) {
         try {
-            FileWriter writer = new FileWriter("dealership.csv");
-            writer.write(dealership.getName()+"|"+dealership.getAddress()+"|"+dealership.getPhone()+"\n");
+            // overwrite the file
+            FileWriter fileWriter = new FileWriter("dealership.csv");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(dealership.getName()+"|"+dealership.getAddress()+"|"+dealership.getPhone()+"\n");
             for(Vehicle vehicle: dealership.getAllVehicles()) {
-                writer.write(vehicle.getVin()+"|"+ vehicle.getYear()+"|"+vehicle.getMake()+"|"+vehicle.getModel()+"|"+vehicle.getVehicleType()+"|"+vehicle.getColor()+"|"+ vehicle.getOdometer()+"|"+ vehicle.getPrice()+"\n");
+                bufferedWriter.write(vehicle.getVin()+"|"+ vehicle.getYear()+"|"+vehicle.getMake()+"|"+vehicle.getModel()+"|"+vehicle.getVehicleType()+"|"+vehicle.getColor()+"|"+ vehicle.getOdometer()+"|"+ vehicle.getPrice()+"\n");
             }
-            writer.flush();
-            writer.close();
+
+            bufferedWriter.flush();
+            bufferedWriter.close();
+            
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
